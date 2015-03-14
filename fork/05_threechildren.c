@@ -35,6 +35,7 @@ int main()
     }
 
     while (wait(&status) > 0) {
+        // wait for all children processes to be finished
     }
 
     printf("!\n");
