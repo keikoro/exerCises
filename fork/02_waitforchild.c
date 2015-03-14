@@ -12,7 +12,7 @@
 
 int main()
 {
-    int child_pid;
+    pid_t child_pid;
     child_pid = fork();
 
     // child process
