@@ -1,5 +1,5 @@
 /*
- *  twochilds.c
+ *  waitandkill.c
  *
  *  A program with a parent and a child process;
  *  the parent waits for the child to finish, or, alternatively, kills it,
