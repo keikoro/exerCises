@@ -15,20 +15,19 @@ int main()
     int child_pid;
     child_pid = fork();
 
-    // parent process
-    if(child_pid > 0) {
-        sleep(4);
-        printf("this is the parent process\n");
-        printf("the parent's PID is: %d\n", getpid());
-        printf("its child's PID is: %d\n", child_pid);
+    // child process
+    if(child_pid == 0) {
+        printf("------------\n");
+        printf("this is child process %d\n", getpid());
+        printf("its parent is: %d\n", getppid());
         sleep(2);
 
-    // child process
-    } else if (child_pid == 0) {
-        sleep(2);
-        printf("this is the child process\n");
-        printf("the child's PID is: %d\n", getpid());
-        printf("its parent's PID is: %d\n", getppid());
+    // parent process
+    } else if (child_pid > 0) {
+        sleep(4);
+        printf("------------\n");
+        printf("this is the parent process, its PID is %d\n", getpid());
+        printf("its child is %d\n", child_pid);
         sleep(2);
 
     // error while forking
