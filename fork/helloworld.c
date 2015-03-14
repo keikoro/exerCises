@@ -21,10 +21,8 @@ int main()
     // parent process
     } else if (child_pid > 0) {
         // wait for child process to print
-        usleep(1000);
-        printf("world");
-        // print newline only when child process is finished
         wait(NULL);
+        printf("world");
         printf("\n");
 
     // error
