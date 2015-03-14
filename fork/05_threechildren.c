@@ -16,14 +16,22 @@ int main()
     pid_t ch1, ch2, ch3, waitpid;
     int status = 0;
 
-    if (fork() == 0) {
+    if ((ch1 = fork()) == 0) {
         printf("Hello");
+    } else {
+        printf("parent, ch1 started\n");
     }
-    if (fork() == 0) {
+
+    if ((ch2 = fork()) == 0) {
         printf(", ");
+    } else {
+        printf("parent, ch2 started\n");
     }
-    if (fork() == 0) {
+
+    if ((ch3 = fork()) == 0) {
         printf("world");
+    } else {
+        printf("parent, ch3 started\n");
     }
 
     wait(&status);
