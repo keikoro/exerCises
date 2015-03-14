@@ -5,8 +5,8 @@
  *  splitting a child process from a parent process with fork()
  */
 
-#import <stdio.h>
-#import <unistd.h>
+#include <stdio.h>
+#include <unistd.h>
 
 int main()
 {

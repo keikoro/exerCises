@@ -6,9 +6,9 @@
  *  also includes process IDs
  */
 
-#import <stdio.h>
-#import <stdlib.h>
-#import <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main()
 {
