@@ -1,6 +1,9 @@
-/*  A program demonstrating basic forking
- *  (splitting child processes from parent processed)
-*/
+/*
+ *  basicfork.c
+ *
+ *  A program demonstrating basic forking:
+ *  splitting a child process from a parent process with fork()
+ */
 
 #import <stdio.h>
 #import <unistd.h>
