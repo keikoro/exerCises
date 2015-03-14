@@ -17,6 +17,7 @@ int main()
     // child process
     if((child_pid = fork()) == 0) {
         printf("Hello ");
+        exit(0);
 
     // parent process
     } else if (child_pid > 0) {
