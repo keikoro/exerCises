@@ -18,27 +18,23 @@ int main()
 
     if ((ch1 = fork()) == 0) {
         printf("Hello");
+        sleep(1);
         exit(EXIT_SUCCESS);
-    } else {
-        printf("parent, ch1 started\n");
     }
 
     if ((ch2 = fork()) == 0) {
         printf(", ");
+        sleep(1);
         exit(EXIT_SUCCESS);
-    } else {
-        printf("parent, ch2 started\n");
     }
 
     if ((ch3 = fork()) == 0) {
         printf("world");
+        sleep(1);
         exit(EXIT_SUCCESS);
-    } else {
-        printf("parent, ch3 started\n");
     }
 
     while (wait(&status) > 0) {
-        printf("successful exits\n");
     }
 
     printf("!\n");
