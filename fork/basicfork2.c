@@ -20,7 +20,7 @@ int main()
         printf("------------\n");
         printf("this is child process %d\n", getpid());
         printf("its parent is: %d\n", getppid());
-        sleep(2);
+        exit(0);
 
     // parent process
     } else if (child_pid > 0) {
@@ -28,7 +28,7 @@ int main()
         printf("------------\n");
         printf("this is the parent process, its PID is %d\n", getpid());
         printf("its child is %d\n", child_pid);
-        sleep(2);
+        wait(NULL);
 
     // error while forking
     } else {
