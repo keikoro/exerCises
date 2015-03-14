@@ -13,6 +13,21 @@
 
 int main()
 {
+    pid_t ch1, ch2, ch3, waitpid;
+    int status = 0;
+
+    if (fork() == 0) {
+        printf("Hello");
+    }
+    if (fork() == 0) {
+        printf(", ");
+    }
+    if (fork() == 0) {
+        printf("world");
+    }
+
+    wait(&status);
+    printf("!\n");
 
     return 0;
 }
