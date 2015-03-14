@@ -8,29 +8,27 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int main()
 {
     int child_pid;
 
-    // parent process
-    if((child_pid = fork()) > 0)
-    {
-        sleep(10);
-        printf("parent process\n");
-    }
     // child process
-    else if (child_pid == 0)
-    {
-        printf("child process\n");
-        printf("my pid is %d\n", getpid());
-        printf("my parents pid is %d\n", getppid());
-        sleep(12);
-        printf("child process\n");
-    }
+    if((child_pid = fork()) == 0) {
+        printf("Hello ");
+
+    // parent process
+    } else if (child_pid > 0) {
+        // wait for child process to print
+        usleep(1000);
+        printf("world");
+        // print newline only when child process is finished
+        wait(NULL);
+        printf("\n");
+
     // error
-    else
-    {
+    } else {
         perror("An error occourred.");
         exit(1);
     }
