@@ -17,9 +17,7 @@ int main()
 {
     pid_t ch1, ch2, ch3, wpid;
     int status = 0;
-    int blank = 0;
     int *(a[3]) = {0};
-
 
     // parent process
     if ((ch1 = fork()) > 0) {
