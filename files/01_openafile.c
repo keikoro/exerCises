@@ -4,10 +4,10 @@
  *  A program demonstrating basic file opening with C.
  */
 
- #include <stdio.h>
- #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
- int main() {
+int main() {
 
     FILE *input;
     char filename[] = "demo.txt";
@@ -22,4 +22,4 @@
     }
 
     return 0;
- }
+}
