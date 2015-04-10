@@ -1,5 +1,5 @@
 /*
- *  basicfork.c
+ *  waitforchild.c
  *
  *  A program demonstrating basic forking:
  *  splitting a child process from a parent process with fork();
