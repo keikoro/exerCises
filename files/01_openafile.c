@@ -1,5 +1,5 @@
 /*
- *  openfile.c
+ *  openafile.c
  *
  *  A program demonstrating basic file opening with C.
  */
