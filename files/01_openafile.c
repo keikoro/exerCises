@@ -6,16 +6,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define MAXCHARS 255
 
-int main() {
+int main()
+{
 
-    FILE *input;
+    FILE *f;
     char filename[] = "demo.txt";
-    char *inputfile = (char*)malloc(256*sizeof(char));
+    char *inputfile = (char *) malloc(MAXCHARS * sizeof(char));
     inputfile = &filename[0];
 
-    if ((input = fopen(inputfile, "r")) != NULL) {
-        printf("Success!\n");
+    if ((f = fopen(inputfile, "r")) != NULL) {
+        printf("Success! demo.txt exists!\n");
+        fclose(f);
     } else {
         fprintf(stderr, "Cannot open input file %s\n", inputfile);
         exit(1);

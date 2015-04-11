@@ -9,10 +9,11 @@
 #include <string.h>
 #define MAXCHARS 255
 
-int main() {
+int main()
+{
 
-    FILE *input;
-    char *inputfile = (char*)malloc(256*sizeof(char));
+    FILE *f;
+    char *inputfile = (char *) malloc(MAXCHARS * sizeof(char));
 
     printf("Please provide the name of/path to a file to be opened:\n");
     fgets(inputfile, MAXCHARS, stdin);
@@ -24,8 +25,9 @@ int main() {
         inputfile[flength - 1] = '\0';
     }
 
-    if ((input = fopen(inputfile, "r")) != NULL) {
+    if ((f = fopen(inputfile, "r")) != NULL) {
         printf("Success, file %s exists!\n", inputfile);
+        fclose(f);
     } else {
         fprintf(stderr, "Cannot open input file %s\n", inputfile);
         exit(1);
