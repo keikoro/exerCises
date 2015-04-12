@@ -25,9 +25,8 @@ int main(int argc, char *argv[])
             printf("Success! File %s exists!\n", inputfile);
         } else {
             fprintf(stderr, "Cannot open input file %s\n", inputfile);
+            exit(1);
         }
-
-
     }
 
     return 0;
