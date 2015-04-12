@@ -36,9 +36,9 @@ int main(int argc, char *argv[]) {
                 // check if file was indeed deleted
                 // (remove might fail due to missing permissions)
                 if ((deleteme = fopen(filename, "r")) != NULL) {
-                    fprintf(stderr, "Deletion of %s was unsuccessful. "
-                            "Make sure you have write permission for its "
-                            "parent directory.\n", filename);
+                    fprintf(stderr, "Deletion of %s was unsuccessful.\n"
+                            "Make sure you have the necessary permissions for "
+                            "its parent directory.\n", filename);
                     exit(1);
                 } else {
                     fprintf(stderr, "%s deleted successfully.\n", filename);
