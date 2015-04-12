@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #define MAXNAMELENGTH 255
 
-bool checkfile(int argc, char* argv);
+bool checkfile(char* argv);
 
 int main(int argc, char *argv[])
 {
@@ -30,14 +30,16 @@ int main(int argc, char *argv[])
     } else {
         filename = argv[1];
 
-        if (checkfile(argc, argv[1]) == true) {
+        if (checkfile(argv[1]) == true) {
             printf("File %s exists!\n", filename);
+
+        // try to create file if it does not exist yet
         } else {
             printf("File %s does not exist yet.\n", filename);
 
+            // create file if possible
             if ((fnew = fopen(filename, "w")) != NULL) {
-                printf("About to create %s...\n", filename);
-                // TODO: create file
+                printf("Successfully created %s!\n", filename);
 
             // output error message if file cannot be created
             // e.g. due to missing permissions for the parent directory
@@ -52,7 +54,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool checkfile(int argc, char* argv) {
+bool checkfile(char* argv) {
 
     FILE *f;
     if ((f = fopen(argv, "r")) != NULL) {
