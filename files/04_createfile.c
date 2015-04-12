@@ -20,11 +20,18 @@ bool checkfile(int argc, char* argv[]);
 int main(int argc, char *argv[])
 {
 
-    checkfile(argc, argv);
+    if (argc < 2) {
+        printf("Not enough arguments provided!\n");
+        printf("Usage: createfile filename [content]\n");
+    } else {
+        checkfile(argc, argv);
+    }
 
     return 0;
 }
 
 bool checkfile(int argc, char* argv[]) {
-        return true;
-    }
+
+    // FILE *f;
+    return true;
+}
