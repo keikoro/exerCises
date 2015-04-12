@@ -36,6 +36,11 @@ int main(int argc, char *argv[])
 
 bool checkfile(int argc, char* argv) {
 
-    // FILE *f;
-    return true;
+    FILE *f;
+    if ((f = fopen(argv, "r")) != NULL) {
+        return true;
+        fclose(f);
+    } else {
+        return false;
+    }
 }
