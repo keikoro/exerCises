@@ -26,11 +26,12 @@ int main(int argc, char *argv[]) {
             fprintf(stderr, "File to delete does not exist! Please try again.\n");
             exit(1);
         } else {
+            fclose(deleteme);
             printf("Are you sure you want to delete %s? "
                     "Press y to continue or an other key to abort.\n", filename);
             scanf("%c", &confirmation);
             if (confirmation == 'y' || confirmation == 'Y') {
-                printf("About to delete the file...\n");
+                remove(filename);
             } else {
                 printf("Deletion aborted.\n");
             }
