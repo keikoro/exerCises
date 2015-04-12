@@ -23,17 +23,28 @@ int main(int argc, char *argv[]) {
         char confirmation;
 
         if ((deleteme = fopen(filename, "r")) == NULL) {
-            fprintf(stderr, "File to delete does not exist! Please try again.\n");
+            fprintf(stderr, "%s does not exist! Please try again.\n", filename);
             exit(1);
         } else {
             fclose(deleteme);
-            printf("Are you sure you want to delete %s? "
-                    "Press y to continue or an other key to abort.\n", filename);
+            printf("Are you sure you want to delete %s? This action cannot be "
+                "undone.\nPress Y to continue or an other key to abort.\n",
+                filename);
             scanf("%c", &confirmation);
             if (confirmation == 'y' || confirmation == 'Y') {
                 remove(filename);
+                // check if file was indeed deleted
+                // (remove might fail due to missing permissions)
+                if ((deleteme = fopen(filename, "r")) != NULL) {
+                    fprintf(stderr, "Deletion of %s was unsuccessful. "
+                            "Make sure you have write permission for its "
+                            "parent directory.\n", filename);
+                    exit(1);
+                } else {
+                    fprintf(stderr, "%s deleted successfully.\n", filename);
+                }
             } else {
-                printf("Deletion aborted.\n");
+                printf("Deletion of %s aborted.\n", filename);
             }
         }
     }
