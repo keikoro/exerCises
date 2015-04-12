@@ -20,14 +20,21 @@ int main(int argc, char *argv[]) {
     } else {
         // check that file exists
         filename = argv[1];
+        char confirmation;
 
         if ((deleteme = fopen(filename, "r")) == NULL) {
             fprintf(stderr, "File to delete does not exist! Please try again.\n");
             exit(1);
         } else {
+            printf("Are you sure you want to delete %s? "
+                    "Press y to continue or an other key to abort.\n", filename);
+            scanf("%c", &confirmation);
+            if (confirmation == 'y' || confirmation == 'Y') {
+                printf("About to delete the file...\n");
+            } else {
+                printf("Deletion aborted.\n");
+            }
         }
-
     }
-
     return 0;
 }
