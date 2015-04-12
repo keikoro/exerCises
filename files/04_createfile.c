@@ -18,8 +18,8 @@
 #include <string.h>
 #define MAXNAMELENGTH 255
 
-bool checkfile(char* filename);
-bool writefile(char* filename);
+bool checkfile(char *filename);
+bool writefile(char *filename, char *content);
 
 int main(int argc, char *argv[])
 {
@@ -30,6 +30,12 @@ int main(int argc, char *argv[])
         printf("Usage: createfile filename [content]\n");
     } else {
         filename = argv[1];
+        char *content = argv[2];
+
+        // check if user provided a content string
+        if(content) {
+            printf("Content is: %s\n", content);
+        }
 
         if (checkfile(filename) == true) {
             printf("File %s exists!\n", filename);
@@ -37,9 +43,8 @@ int main(int argc, char *argv[])
         // try to create file if it does not exist yet
         } else {
             printf("File %s does not exist yet.\n", filename);
-
             // create file if possible
-            if (writefile(filename) == true) {
+            if (writefile(filename, content) == true) {
                 return 0;
             } else {
                 exit(1);
@@ -49,7 +54,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool checkfile(char* filename) {
+bool checkfile(char *filename) {
 
     FILE *f;
     if ((f = fopen(filename, "r")) != NULL) {
@@ -60,11 +65,15 @@ bool checkfile(char* filename) {
     }
 }
 
-bool writefile(char* filename) {
+bool writefile(char *filename, char *content) {
 
     FILE *fnew;
     if ((fnew = fopen(filename, "w")) != NULL) {
         printf("Successfully created %s!\n", filename);
+        // only write content into the file if content is not NULL
+        if (content) {
+            fprintf(fnew, "%s\n", content);
+        }
         fclose(fnew);
         return true;
     // output error message if file cannot be created
