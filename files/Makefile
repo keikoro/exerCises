@@ -4,7 +4,8 @@
 CC=gcc
 CFLAGS = -Wall -Werror -g -O -std=c99
 
-all: openafile opendifferentfiles openfilewithargument createfile
+all: openafile opendifferentfiles openfilewithargument createfile \
+		renamefile
 
 openafile: 01_openafile.o
 	${CC} ${CFLAGS} -o $@ $<
@@ -13,6 +14,8 @@ opendifferentfiles: 02_opendifferentfiles.o
 openfilewithargument: 03_openfilewithargument.o
 	${CC} ${CFLAGS} -o $@ $<
 createfile: 04_createfile.o
+	${CC} ${CFLAGS} -o $@ $<
+renamefile: 05_renamefile.o
 	${CC} ${CFLAGS} -o $@ $<
 %.o: %.c
 	${CC} ${CFLAGS} -c $<
@@ -31,7 +34,8 @@ clean_o:
 	rm -f *.o
 
 clean:
-	rm -f openafile opendifferentfiles openfilewithargument createfile
+	rm -f openafile opendifferentfiles openfilewithargument createfile \
+			renamefile
 	rm -f *.o
 # rm dSYM dirs created on Mac
 # don't output this line on the command line (@)
