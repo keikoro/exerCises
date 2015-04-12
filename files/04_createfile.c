@@ -14,23 +14,41 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#define MAXNAMELENGTH 255
 
 bool checkfile(int argc, char* argv);
 
 int main(int argc, char *argv[])
 {
+    FILE *fnew;
+    char *filename = (char *) malloc(MAXNAMELENGTH * sizeof(char));
 
     if (argc < 2) {
         printf("Not enough arguments provided!\n");
         printf("Usage: createfile filename [content]\n");
     } else {
+        filename = argv[1];
+
         if (checkfile(argc, argv[1]) == true) {
-            printf("File exists!\n");
+            printf("File %s exists!\n", filename);
         } else {
-            printf("File needs to be created!\n");
+            printf("File %s does not exist yet.\n", filename);
+
+            if ((fnew = fopen(filename, "w")) != NULL) {
+                printf("About to create %s...\n", filename);
+                // TODO: create file
+
+            // output error message if file cannot be created
+            // e.g. due to missing permissions for the parent directory
+            } else {
+                fprintf(stderr, "Cannot write file %s.\n", filename);
+                fprintf(stderr, "Check if you have the necessary permissions "
+                    "to write to its parent directory.\n");
+                exit(1);
+            }
         }
     }
-
     return 0;
 }
 
