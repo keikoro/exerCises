@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool checkfile(int argc, char* argv[]);
+bool checkfile(int argc, char* argv);
 
 int main(int argc, char *argv[])
 {
@@ -24,13 +24,17 @@ int main(int argc, char *argv[])
         printf("Not enough arguments provided!\n");
         printf("Usage: createfile filename [content]\n");
     } else {
-        checkfile(argc, argv);
+        if (checkfile(argc, argv[1]) == true) {
+            printf("File exists!\n");
+        } else {
+            printf("File needs to be created!\n");
+        }
     }
 
     return 0;
 }
 
-bool checkfile(int argc, char* argv[]) {
+bool checkfile(int argc, char* argv) {
 
     // FILE *f;
     return true;
