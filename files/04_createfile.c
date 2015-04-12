@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
 #define MAXNAMELENGTH 255
 
 bool checkfile(char *filename);
