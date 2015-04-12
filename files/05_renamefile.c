@@ -12,7 +12,7 @@
 int main(int argc, char *argv[]) {
 
     FILE *f;
-    // FILE *frenamed;
+    FILE *frenamed;
     char *oldname;
     char *newname;
 
@@ -31,6 +31,13 @@ int main(int argc, char *argv[]) {
             exit(1);
 
         } else {
+            // check if there is no file yet with new filename
+            if ((frenamed = fopen(newname, "r")) != NULL) {
+                fprintf(stderr, "Careful! A file with your preferred new "
+                        "filename already exists. Please try again.\n");
+                exit(1);
+            }
+
             return 0;
         }
     }
