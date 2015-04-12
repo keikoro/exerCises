@@ -31,11 +31,18 @@ int main(int argc, char *argv[]) {
             exit(1);
 
         } else {
+            // close file again
+            fclose(f);
+
             // check if there is no file yet with new filename
             if ((frenamed = fopen(newname, "r")) != NULL) {
                 fprintf(stderr, "Careful! A file with your preferred new "
                         "filename already exists. Please try again.\n");
+                fclose(frenamed);
                 exit(1);
+            } else {
+                rename(oldname, newname);
+                printf("Success! %s was renamed to %s.\n", oldname, newname);
             }
 
             return 0;
