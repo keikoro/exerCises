@@ -22,7 +22,6 @@ bool writefile(char* filename);
 
 int main(int argc, char *argv[])
 {
-    FILE *fnew;
     char *filename = (char *) malloc(MAXNAMELENGTH * sizeof(char));
 
     if (argc < 2) {
@@ -31,7 +30,7 @@ int main(int argc, char *argv[])
     } else {
         filename = argv[1];
 
-        if (checkfile(argv[1]) == true) {
+        if (checkfile(filename) == true) {
             printf("File %s exists!\n", filename);
 
         // try to create file if it does not exist yet
@@ -39,15 +38,9 @@ int main(int argc, char *argv[])
             printf("File %s does not exist yet.\n", filename);
 
             // create file if possible
-            if ((fnew = fopen(filename, "w")) != NULL) {
-                printf("Successfully created %s!\n", filename);
-
-            // output error message if file cannot be created
-            // e.g. due to missing permissions for the parent directory
+            if (writefile(filename) == true) {
+                return 0;
             } else {
-                fprintf(stderr, "Cannot write file %s.\n", filename);
-                fprintf(stderr, "Check if you have the necessary permissions "
-                    "to write to its parent directory.\n");
                 exit(1);
             }
         }
@@ -62,6 +55,23 @@ bool checkfile(char* filename) {
         return true;
         fclose(f);
     } else {
+        return false;
+    }
+}
+
+bool writefile(char* filename) {
+
+    FILE *fnew;
+    if ((fnew = fopen(filename, "w")) != NULL) {
+        printf("Successfully created %s!\n", filename);
+        fclose(fnew);
+        return true;
+    // output error message if file cannot be created
+    // e.g. due to missing permissions for the parent directory
+    } else {
+        fprintf(stderr, "Cannot write file %s.\n", filename);
+        fprintf(stderr, "Check if you have the necessary permissions "
+            "to write to its parent directory.\n");
         return false;
     }
 }
