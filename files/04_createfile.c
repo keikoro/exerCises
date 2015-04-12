@@ -25,12 +25,6 @@ int main(int argc, char *argv[])
 {
     char *filename;
 
-    // check if allocation of memory worked
-    if ((filename = (char *) malloc(MAXNAMELENGTH * sizeof(char))) == NULL) {
-        fprintf(stderr, "Error allocating memory!\n");
-        exit(1);
-    }
-
     if (argc < 2) {
         printf("Not enough arguments provided!\n");
         printf("Usage: createfile filename [content]\n");
