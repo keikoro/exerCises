@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 
         if ((f = fopen(inputfile, "r")) != NULL) {
             printf("Success! File %s exists!\n", inputfile);
+            fclose(f);
         } else {
             fprintf(stderr, "Cannot open input file %s\n", inputfile);
             exit(1);
