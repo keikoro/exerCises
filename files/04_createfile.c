@@ -17,7 +17,8 @@
 #include <stdlib.h>
 #define MAXNAMELENGTH 255
 
-bool checkfile(char* argv);
+bool checkfile(char* filename);
+bool writefile(char* filename);
 
 int main(int argc, char *argv[])
 {
@@ -54,10 +55,10 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool checkfile(char* argv) {
+bool checkfile(char* filename) {
 
     FILE *f;
-    if ((f = fopen(argv, "r")) != NULL) {
+    if ((f = fopen(filename, "r")) != NULL) {
         return true;
         fclose(f);
     } else {
